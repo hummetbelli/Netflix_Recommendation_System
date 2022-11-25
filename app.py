@@ -36,14 +36,14 @@ def Table(df):
     fig=go.Figure(go.Table( columnorder = [1,2,3],
           columnwidth = [10,28],
             header=dict(values=[' Title','Description'],
-                        line_color='black',font=dict(color='black',size= 19),height=40,
-                        fill_color='#dd571c',#
+                        line_color='black',font=dict(color='black',size= 16),height=80,
+                        fill_color='#424281',
                         align=['left','center']),
                 cells=dict(values=[df.title,df.description],
-                       fill_color='#ffdac4',line_color='grey',
-                           font=dict(color='black', family="Lato", size=16),
+                       fill_color='#EFF2F5',line_color='grey',
+                           font=dict(color='black', family="Lato", size=20),
                        align='left')))
-    fig.update_layout(height=500, title ={'text': "Top 10 Movie Recommendations", 'font': {'size': 22}},title_x=0.5
+    fig.update_layout(height=10000, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
                      )
     return st.plotly_chart(fig,use_container_width=True)
 movie_list = netflix_data['title'].values
@@ -53,7 +53,15 @@ movie_list = netflix_data['title'].values
 #streamlit
 ##################################################################
 
-st.header('Netflix Movie Recommendation System')
+st.set_page_config(
+    page_title="Netflix Movie Recommendation System",
+    page_icon="film_frames",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+
+st.header("🎞️ Netflix Movie Recommendation System")
 lottie_coding = load_lottiefile("m4.json")
 st_lottie(
     lottie_coding,
