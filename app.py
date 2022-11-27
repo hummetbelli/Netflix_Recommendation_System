@@ -12,16 +12,33 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 netflix_data = pd.read_csv('netflix_titles.csv')
 
+#Filling null values with empty string.
+filledna=netflix_data.fillna('')
 
-tfidf = TfidfVectorizer(stop_words='english')
-netflix_data['description'] = netflix_data['description'].fillna('')
-tfidf_matrix = tfidf.fit_transform(netflix_data['description'])
+#Cleaning the data - making all the words lower case
+def clean_data(x):
+        return str.lower(x.replace(" ", ""))
 
-from sklearn.metrics.pairwise import linear_kernel
+#Identifying features on which the model is to be filtered.
+features=['title','director','cast','listed_in','description']
+filledna=filledna[features]
+
+for feature in features:
+    filledna[feature] = filledna[feature].apply(clean_data)
+
+def create_soup(x):
+    return x['title']+ ' ' + x['director'] + ' ' + x['cast'] + ' ' +x['listed_in']+' '+ x['description']
+
+filledna['soup'] = filledna.apply(create_soup, axis=1)
+tfidf  = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf.fit_transform(filledna['soup'])
+
+
 cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
+# Reset index of our main DataFrame and construct reverse mapping as before
+filledna=filledna.reset_index()
 indices = pd.Series(netflix_data.index, index=netflix_data['title']).drop_duplicates()
-
 def get_recommendations(title, cosine_sim=cosine_sim):
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim[idx]))
