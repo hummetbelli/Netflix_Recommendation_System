@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from streamlit_lottie import st_lottie
+from sklearn.metrics.pairwise import linear_kernel
 import json
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
