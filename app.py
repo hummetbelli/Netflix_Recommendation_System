@@ -36,12 +36,12 @@ def Table(df):
     fig=go.Figure(go.Table( columnorder = [1,2,3],
           columnwidth = [10,28],
             header=dict(values=[' Title','Description'],
-                        line_color='black',font=dict(color='black',size= 16),height=80,
+                        line_color='black',font=dict(color='black',size= 22),height=50,
                         fill_color='#424281',
                         align=['left','center']),
                 cells=dict(values=[df.title,df.description],
                        fill_color='#EFF2F5',line_color='grey',
-                           font=dict(color='black', family="Lato", size=20),
+                           font=dict(color='black', family="Lato", size=16),height=50,
                        align='left')))
     fig.update_layout(height=10000, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
                      )
