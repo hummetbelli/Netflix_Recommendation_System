@@ -61,7 +61,7 @@ def Table(df):
                        fill_color='#EFF2F5',line_color='grey',
                            font=dict(color='black', family="Lato", size=16),height=50,
                        align='left')))
-    fig.update_layout(height=500, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
+    fig.update_layout(height=750, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
                      )
     return st.plotly_chart(fig,use_container_width=True)
 movie_list = netflix_data['title'].values
@@ -86,7 +86,7 @@ st_lottie(
     speed=1,
     reverse=False,
     loop=True,
-    quality="low",height=220
+    quality="low",height=350
 )
 selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
