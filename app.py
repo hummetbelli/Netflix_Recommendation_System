@@ -61,7 +61,7 @@ def Table(df):
                        fill_color='#EFF2F5',line_color='grey',
                            font=dict(color='black', family="Lato", size=16),height=50,
                        align='left')))
-    fig.update_layout(height=10000, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
+    fig.update_layout(height=350, title ={'text': "Top 10 Movie Recommendations", 'font': {'size':25}},title_x=0.7
                      )
     return st.plotly_chart(fig,use_container_width=True)
 movie_list = netflix_data['title'].values
@@ -86,7 +86,7 @@ st_lottie(
     speed=1,
     reverse=False,
     loop=True,
-    quality="low",height=500
+    quality="low",height=350
 )
 selected_movie = st.selectbox(
     "Type or select a movie from the dropdown",
@@ -103,7 +103,7 @@ st.write('  '
          )
 st.write(' ')
 
-git = st.checkbox('Show Netflix Exploratory Data Analysis')
+git = st.checkbox('Show Netflix Data Source')
 if git :
     st.write(
         "check out this [link](https://github.com/hummetbelli/Netflix_Recommendation_System)")
