@@ -103,3 +103,7 @@ st.write('  '
          )
 st.write(' ')
 
+git = st.checkbox('Show Netflix Exploratory Data Analysis')
+if git :
+    st.write(
+        "check out this [link](https://github.com/hummetbelli/Netflix_Recommendation_System)")
