@@ -106,4 +106,4 @@ st.write(' ')
 git = st.checkbox('Show Netflix Data Source')
 if git :
     st.write(
-        "check out github[link](https://github.com/hummetbelli/Netflix_Recommendation_System)")
+        "check out github [link](https://github.com/hummetbelli/Netflix_Recommendation_System)")
