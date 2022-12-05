@@ -69,7 +69,7 @@ movie_list = netflix_data['title'].values
 
 ####################################################################
 #streamlit
-##################################################################
+####################################################################
 
 st.set_page_config(
     page_title="Netflix Movie Recommendation System",
@@ -102,8 +102,3 @@ if st.button('Show Recommendation'):
 st.write('  '
          )
 st.write(' ')
-
-git = st.checkbox('Show Netflix Data Source')
-if git :
-    st.write(
-        "check out github [link](https://github.com/hummetbelli/Netflix_Recommendation_System)")
